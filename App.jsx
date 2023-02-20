@@ -131,7 +131,6 @@ function HomeScreen({navigation}) {
                     <Text style={styles.viewText}>{aston[day-1]}{"\n"}</Text>
                     <Text style={styles.viewText}>{date}/{month}/{year}{"\n"}</Text>
                     <Text style={styles.viewText}>{time}:{time2}{"\n"}</Text>
-                    <Text style={styles.viewText}>Place</Text>
                 </View>
         </View>
     );

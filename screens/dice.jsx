@@ -20,7 +20,6 @@ export const DicePage = ()=>{
         diceSix
     ]
     const rollDice = () =>{
-        console.log("hi")
         setDice(Math.floor(Math.random() * 6))
     }
     
@@ -31,15 +30,16 @@ export const DicePage = ()=>{
     const [dice, setDice] = useState("");
 
     return(
-        <View>
-
-            
+        <View style={diceStyles.main}>
             <TouchableOpacity
             onPress={() =>rollDice()}
             >
             <Image 
             source={images[dice]}
             />
+            <Text>
+                You rolled a {dice +1}
+            </Text>
             </TouchableOpacity>
         </View>
     )

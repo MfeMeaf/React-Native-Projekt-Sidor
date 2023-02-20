@@ -1,22 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Image ,ScrollView,SafeAreaView, ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native';
 import { todoStyles } from './styles';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import TaskItem from './Components/TaskItem';
+
 
 export const ToDoPage = () =>{
-    const [task, setTask] = useState([]);
-    const [todo, setTodo] = useState([]);
+    const [todos, setTodos] = useState([]);
+    const [tasks, setTasks] = useState([]);
 
-    const addTodo = (myTodo) =>{
-        console.log("hi")
-        setTodo([...todo, myTodo]);
+    const {getItem, setItem} = useAsyncStorage('@task');
+
+    const readItemFromStorage = async() => {
+        const item = await getItem();
+        let array = JSON.parse(item);
+        if(Array.isArray(array) && (array !== null || undefined))
+        {
+            array.map((elem) => {
+                setTodos([...todos, elem]);
+                console.log(elem);
+            })
+        }
     }
 
-    const delteIndex = (index) =>{
-        console.log(index)
+    const writeItemToStorage = async newValue => {
+        await setItem(newValue);
+    }
+
+    const addTodo = (myTodo) =>{
+        setTodos([...todos, myTodo]);
+        writeItemToStorage(JSON.stringify(myTodo));
+    }
+
+    const deleteIndex = (deleteIndex) =>{
+        console.log("INDEX:", deleteIndex)
+        setTodos(todos.filter((value, index) => index != deleteIndex))
     }
 
     useEffect(() => {
-        addTodo();
+        readItemFromStorage();
     }, [])
 
     return(
@@ -25,10 +47,10 @@ export const ToDoPage = () =>{
                 <Text style={todoStyles.text}>Todo</Text>
                 <TextInput 
                     placeholder="Type text here"
-                    onChangeText={text => setTask(text)}
+                    onChangeText={text => setTasks(text)}
                 />
                 <TouchableOpacity style={todoStyles.button}
-                onPress={() => {(addTodo(task))}}
+                onPress={() => {(addTodo(tasks))}}
                 > 
                     <Text>Add Todo</Text>
                 </TouchableOpacity>
@@ -36,15 +58,10 @@ export const ToDoPage = () =>{
             <View style={todoStyles.list}>
             <SafeAreaView style={todoStyles.container}>
             <ScrollView style={todoStyles.scrollView}>
-            {todo.map((data)=>{
+            {todos.map((data, index)=>{
                 return(
-                    <View>
-                    <Text>{data}{"\n"}</Text>
-                    <TouchableOpacity
-                    onPress={delteIndex()}
-                    >
-                        <Text>X</Text>
-                    </TouchableOpacity>
+                    <View key={index}>
+                        <TaskItem index={index+1} task={data} deleteTask={() => {deleteIndex(index)}}/>
                     </View>
                 )})
             }

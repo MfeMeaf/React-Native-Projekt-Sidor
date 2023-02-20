@@ -7,9 +7,9 @@ export const NewsApp = ({ route, navigation }) =>{
     return(
       <SafeAreaView style={newsStyles.container}>
         <ScrollView style={newsStyles.scrollView}>
-            {news.map((data)=>{
+            {news.map((data, index)=>{
                 return(
-        <View style={newsStyles.news}>
+        <View style={newsStyles.news} key={index}>
         <Image
         style={styles.tinyLogo}
         source={{

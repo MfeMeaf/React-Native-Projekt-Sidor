@@ -1,11 +1,11 @@
 import { StyleSheet, StatusBar,Dimensions} from 'react-native';
 export const weatherStyles = StyleSheet.create({
     mainView:{
-        backgroundColor: 'rgb(216, 172, 132)',
+        backgroundColor: 'rgb(120, 120, 120)',
         height: '100%'
     },
     View:{
-        backgroundColor: 'rgb(198, 133, 73)',
+        backgroundColor: 'rgb(150, 150, 150)',
         width: '55%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -25,7 +25,7 @@ export const weatherStyles = StyleSheet.create({
 export const todoStyles = StyleSheet.create({
     background:{
         flex: 1,
-        backgroundColor: 'rgb(216, 172, 132)',
+        backgroundColor: 'rgb(120, 120, 120)',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -34,7 +34,7 @@ export const todoStyles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
         width: '75%',
-        backgroundColor: 'rgb(149, 138, 138)',
+        backgroundColor: 'rgb(150, 150, 150)',
         color: 'white',
         borderRadius: 10,
         borderColor: 'black',
@@ -44,7 +44,7 @@ export const todoStyles = StyleSheet.create({
         flex: 5,
         width: '75%',
         margin: 50,
-        backgroundColor: 'rgb(149, 138, 138)',
+        backgroundColor: 'rgb(150, 150, 150)',
         borderRadius: 10,
         borderColor: 'black',
         borderWidth: 1.5,
@@ -74,12 +74,18 @@ export const todoStyles = StyleSheet.create({
       },
 });
 export const diceStyles = StyleSheet.create({
+    main:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgb(150, 150, 150)',
+        height: '100%',
+
+    },
     button:{
         backgroundColor: 'rgb(149, 162, 174)',
     },
     buttonText:{
         backgroundColor: 'rgb(200, 162, 174)',
-
     }
 })
 
@@ -87,13 +93,13 @@ export const newsStyles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: StatusBar.currentHeight,
-        backgroundColor: 'rgb(216, 172, 132)'
+        backgroundColor: 'rgb(120, 120, 120)',
       },
       scrollView: {
         marginHorizontal: 20,
       },
       news:{
-        backgroundColor: 'rgb(198, 133, 73)',
+        backgroundColor: 'rgb(170, 170, 170)',
         borderRadius: 10,
         borderColor: 'black',
         borderWidth: 1.5,
@@ -120,7 +126,6 @@ export const cheatStyle = StyleSheet.create({
         backgroundColor: 'rgb(212, 214, 206)',
         flex: 1,
         justifyContent: 'flex-start',
-        alignItems: 'center',
         marginTop: 25,
     },
     buttons:{
@@ -134,6 +139,7 @@ export const cheatStyle = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         backgroundColor: 'rgba(255, 255, 255, 0.4)',
+
     },
     pdf: {
         flex:1,
@@ -151,6 +157,7 @@ export const styles = StyleSheet.create({
         flex:1,
         flexDirection: "row",
         justifyContent: 'space-between',
+
     },
     card: {
         flex: 1,
@@ -200,6 +207,7 @@ export const styles = StyleSheet.create({
         marginRight: 15,
         flexDirection: 'row',
         borderRadius: 5,
+
     },
     buttonText: {
         color: 'white',
